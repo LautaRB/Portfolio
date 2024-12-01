@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+		<meta name="generator" content={Astro.generator} />	
+		<title>Portfolio - Lautaro Rodríguez Brown</title>
+	</head>
+	<body>
+		<div>
+			<slot />
+		</div>
+	</body>
+</html>
+
+<style>
+	html {
+		font-family: system-ui, sans-serif;
+		background-color: black;
+		color: white;
+	}
+
+	body {
+		margin: 0;
+		width: 100%;
+		height: 100%;
+		@apply grid place-content-center p-20;
+	}
+
+	body > div {
+		@apply container;
+	}
+</style>
