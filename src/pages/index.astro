@@ -1,7 +1,17 @@
 ---
-import BaseLayout from '../layouts/baseLayout.astro';
+import BaseLayout from "../layouts/baseLayout.astro";
+import SwiperSection from "../components/swiperSection.astro";
 ---
 
 <BaseLayout title="Portfolio - Lautaro Rodríguez Brown">
-  
+    <div class="text-center">
+        <h1 class="text-5xl font-extrabold">
+            <span class="text-blue-500">Software Developer</span>
+            <span class="block text-white">Lautaro Rodriguez Brown</span>
+        </h1>
+
+        <hr class="border-t-2 border-gray-400 my-8 mx-auto w-full" />
+        <SwiperSection />
+        <hr class="border-t-2 border-gray-400 my-8 mx-auto w-full" />
+    </div>
 </BaseLayout>

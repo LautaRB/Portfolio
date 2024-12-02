@@ -1,0 +1,61 @@
+---
+import 'swiper/swiper-bundle.css';
+---
+
+<div class="swiper-container">
+  <div class="swiper-wrapper">
+    
+    <div class="swiper-slide">
+      <section id="sobre-mi" class="text-white">
+        <h1>Sobre mí</h1>
+        <p>Información sobre mí...</p>
+      </section>
+    </div>
+
+    <div class="swiper-slide">
+      <section id="formacion" class="text-white">
+        <h1>Formación</h1>
+        <p>Detalles sobre mi formación...</p>
+      </section>
+    </div>
+
+    <div class="swiper-slide">
+      <section id="proyectos" class="text-white">
+        <h1>Proyectos</h1>
+        <p>Proyectos en los que he trabajado...</p>
+      </section>
+    </div>
+
+    <div class="swiper-slide">
+      <section id="contacto" class="text-white">
+        <h1>Contacto</h1>
+        <p>Cómo puedes contactarme...</p>
+      </section>
+    </div>
+  </div>
+
+  <!-- Paginación -->
+  <div class="swiper-pagination"></div>
+
+  <!-- Navegación (flechas) -->
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+</div>
+
+<script type="module">
+    import Swiper from 'swiper';
+  
+    const swiper = new Swiper('.swiper-container', {
+      spaceBetween: 50,
+      slidesPerView: 1,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      loop: true,
+    });
+  </script>
