@@ -1,36 +1,31 @@
 ---
-import 'swiper/swiper-bundle.css';
+import Swiper from "swiper";
+import { Navigation, Pagination } from "swiper/modules";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css";
 ---
 
-<div class="swiper-container">
+<div class="swiper">
   <div class="swiper-wrapper">
-    
-    <div class="swiper-slide">
-      <section id="sobre-mi" class="text-white">
-        <h1>Sobre mí</h1>
-        <p>Información sobre mí...</p>
-      </section>
+    <div id="sobre-mi" class="swiper-slide text-white">
+      <h1>Sobre mí</h1>
+      <p>Información sobre mí...</p>
     </div>
 
-    <div class="swiper-slide">
-      <section id="formacion" class="text-white">
-        <h1>Formación</h1>
-        <p>Detalles sobre mi formación...</p>
-      </section>
+    <div id="formacion" class="swiper-slide text-white">
+      <h1>Formación</h1>
+      <p>Detalles sobre mi formación...</p>
     </div>
 
-    <div class="swiper-slide">
-      <section id="proyectos" class="text-white">
-        <h1>Proyectos</h1>
-        <p>Proyectos en los que he trabajado...</p>
-      </section>
+    <div id="proyectos" class="swiper-slide text-white">
+      <h1>Proyectos</h1>
+      <p>Proyectos en los que he trabajado...</p>
     </div>
 
-    <div class="swiper-slide">
-      <section id="contacto" class="text-white">
-        <h1>Contacto</h1>
-        <p>Cómo puedes contactarme...</p>
-      </section>
+    <div id="contacto" class="swiper-slide text-white">
+      <h1>Contacto</h1>
+      <p>Cómo puedes contactarme...</p>
     </div>
   </div>
 
@@ -43,19 +38,17 @@ import 'swiper/swiper-bundle.css';
 </div>
 
 <script type="module">
-    import Swiper from 'swiper';
-  
-    const swiper = new Swiper('.swiper-container', {
-      spaceBetween: 50,
-      slidesPerView: 1,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      loop: true,
-    });
-  </script>
+  const swiper = new Swiper(".swiper", {
+    modules: [Navigation, Pagination], // Asegúrate de incluir los módulos
+    grabCursor: true,
+    loop: true,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true, // Permitir clics en los puntos de paginación
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+</script>
