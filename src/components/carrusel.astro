@@ -1,6 +1,7 @@
 ---
 import "@splidejs/splide/css";
 ---
+
 <div class="splide" role="group">
   <div class="splide__track">
     <ul class="splide__list">
@@ -32,7 +33,6 @@ import "@splidejs/splide/css";
   </div>
 </div>
 
-
 <script>
   import Splide from "@splidejs/splide";
   let splide = new Splide(".splide", {
@@ -41,4 +41,17 @@ import "@splidejs/splide/css";
   });
 
   splide.mount();
+
+  // Maneja los clics del navbar
+  document.querySelectorAll(".nav-link").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault(); // Evita el comportamiento por defecto del enlace
+
+      // Obtén el índice del slide desde data-slide
+      const targetIndex = parseInt(link.getAttribute("data-slide") ?? "0", 10);
+
+      // Navega al slide correspondiente
+      splide.go(targetIndex);
+    });
+  });
 </script>
