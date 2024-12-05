@@ -25,34 +25,74 @@ import "@splidejs/splide/css";
       </li>
       <li class="splide__slide">
         <div id="contacto" class="pb-12 text-white">
-          <h1 class="text-xl font-bold">Contacto</h1>
-          <p>blablabla</p>
+          
+          <h1 class="text-xl font-bold mb-2">Contacto</h1>
+
+          <div class="flex justify-center items-center h-full">
+            <a href="mailto:lautanba@gmail.com">
+              <button
+                class="relative flex items-center overflow-hidden px-6 py-3 w-auto bg-blue-500 text-white rounded-lg group hover:bg-blue-600"
+              >
+                <!-- Texto -->
+                <span class="transition-all duration-300 group-hover:mr-6"
+                  >Gmail</span
+                >
+                <!-- Icono -->
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png"
+                  alt="Gmail Icon"
+                  class="absolute right-2 transform translate-x-10 transition-transform duration-300 group-hover:translate-x-0 w-6 h-6"
+                />
+              </button>
+            </a>
+
+            <a href="https://github.com/LautaRB">
+              <button
+                class="relative flex items-center overflow-hidden px-6 py-3 w-auto bg-blue-500 text-white rounded-lg group hover:bg-blue-600"
+              >
+                <!-- Texto -->
+                <span class="transition-all duration-300 group-hover:mr-6"
+                  >Github</span
+                >
+                <!-- Icono -->
+                <img
+                  src="https://commons.wikimedia.org/wiki/File:GitHub_Invertocat_Logo.svg"
+                  alt="Github Icon"
+                  class="absolute right-2 transform translate-x-10 transition-transform duration-300 group-hover:translate-x-0 w-6 h-6"
+                />
+              </button>
+            </a>
+          </div>
+
         </div>
       </li>
     </ul>
+
+    <script>
+      import Splide from "@splidejs/splide";
+      let splide = new Splide(".splide", {
+        type: "loop",
+        padding: "5rem",
+        arrows: false,
+      });
+
+      splide.mount();
+
+      // Maneja los clics del navbar
+      document.querySelectorAll(".nav-link").forEach((link) => {
+        link.addEventListener("click", (event) => {
+          event.preventDefault(); // Evita el comportamiento por defecto del enlace
+
+          // Índice del slide correspondiente
+          const targetIndex = parseInt(
+            link.getAttribute("data-slide") ?? "0",
+            10,
+          );
+
+          // Navega al slide correspondiente
+          splide.go(targetIndex);
+        });
+      });
+    </script>
   </div>
 </div>
-
-<script>
-  import Splide from "@splidejs/splide";
-  let splide = new Splide(".splide", {
-    type: "loop",
-    padding: "5rem",
-    arrows: false,
-  });
-
-  splide.mount();
-
-  // Maneja los clics del navbar
-  document.querySelectorAll(".nav-link").forEach((link) => {
-    link.addEventListener("click", (event) => {
-      event.preventDefault(); // Evita el comportamiento por defecto del enlace
-
-      // Obtén el índice del slide desde data-slide
-      const targetIndex = parseInt(link.getAttribute("data-slide") ?? "0", 10);
-
-      // Navega al slide correspondiente
-      splide.go(targetIndex);
-    });
-  });
-</script>
