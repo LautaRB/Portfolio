@@ -1,5 +1,5 @@
 ---
-const { name, link } = Astro.props;
+const { name, link, icon } = Astro.props;
 ---
 <a href={link}>
     <button
@@ -11,8 +11,8 @@ const { name, link } = Astro.props;
       >
       <!-- Icono -->
       <img
-        src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png"
-        alt="Gmail Icon"
+        src={icon}
+        alt={name} " icon"
         class="absolute right-2 transform translate-x-10 transition-transform duration-300 group-hover:translate-x-0 w-6 h-6"
       />
     </button>
