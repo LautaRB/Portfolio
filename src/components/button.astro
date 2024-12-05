@@ -1,0 +1,19 @@
+---
+const { name, link } = Astro.props;
+---
+<a href={link}>
+    <button
+      class="relative flex items-center overflow-hidden px-6 py-3 w-auto bg-blue-500 text-white rounded-lg group hover:bg-blue-600"
+    >
+      <!-- Texto -->
+      <span class="transition-all duration-300 group-hover:mr-6"
+        >{name}</span
+      >
+      <!-- Icono -->
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png"
+        alt="Gmail Icon"
+        class="absolute right-2 transform translate-x-10 transition-transform duration-300 group-hover:translate-x-0 w-6 h-6"
+      />
+    </button>
+</a>
