@@ -1,10 +1,31 @@
 {
+  "compilerOptions": {
+    /* Target y librerías */
+    "target": "ES2020",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+
+    /* Resolución de módulos */
+    "moduleResolution": "bundler",
+    "moduleDetection": "force",
+    "noEmit": true,
+
+    /* Reglas estrictas y linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+
+    /* Alias */
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@pages/*": ["src/Pages/*"]
+    }
+  },
   "extends": "astro/tsconfigs/strict",
-  "include": [
-    ".astro/types.d.ts",
-    "**/*"
-  ],
-  "exclude": [
-    "dist"
-  ]
+  "include": [".astro/types.d.ts", "src/**/*"],
+  "exclude": ["dist"]
 }
