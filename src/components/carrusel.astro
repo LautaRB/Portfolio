@@ -1,6 +1,7 @@
 ---
 import "@splidejs/splide/css";
 import Button from "@components/Button.astro";
+import Card from "@components/Card.astro";
 ---
 
 <div class="splide" role="group">
@@ -21,20 +22,33 @@ import Button from "@components/Button.astro";
       <li class="splide__slide">
         <div id="proyectos" class="pb-12 text-white">
           <h1 class="text-xl font-bold">Proyectos</h1>
-          <p>blablabla</p>
+
+          <Card />
         </div>
       </li>
       <li class="splide__slide">
-        <div id="contacto" class="pb-12 text-white">
-          
-          <h1 class="text-xl font-bold mb-2">Contacto</h1>
+        <div id="contacto" class="pb-12 text-white text-center">
+          <h1 class="text-xl font-bold mb-6">Contacto</h1>
 
-          <div class="inline-grid grid-cols-2 gap-2">
-            <Button name="Gmail" link="mailto:lautarobrown@gmail.com" icon="/Gmail_Icon.svg"/>
-            <Button name="Github" link="https://github.com/LautaRB" icon="/Github_Icon.svg"/>
-            <Button name="Whatsapp" link="https://wa.me/541133283830" icon="/Whatsapp_Icon.svg"/> 
+          <div
+            class="grid gap-4 items-center justify-center"
+          >
+            <Button
+              name="Gmail"
+              link="mailto:lautanba@gmail.com"
+              icon="/Gmail_Icon.svg"
+            />
+            <Button
+              name="LinkedIn"
+              link="https://www.linkedin.com/in/lautaro-rodriguez-brown-7294b9257/"
+              icon="/Linkedin_Icon.svg"
+            />
+            <Button
+              name="Github"
+              link="https://github.com/LautaRB"
+              icon="/Github_Icon.svg"
+            />
           </div>
-
         </div>
       </li>
     </ul>
@@ -57,7 +71,7 @@ import Button from "@components/Button.astro";
           // Índice del slide correspondiente
           const targetIndex = parseInt(
             link.getAttribute("data-slide") ?? "0",
-            10,
+            10
           );
 
           // Navega al slide correspondiente
