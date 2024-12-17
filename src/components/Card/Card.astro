@@ -2,7 +2,7 @@
 const { title } = Astro.props;
 ---
 
-<div class="flex items-center justify-center select-none">
+<div class="flex items-center justify-center select-none mt-6">
   <div
     class="relative w-96 h-44 bg-white rounded-lg p-5 overflow-hidden transition-transform duration-600 ease-in group"
   >
@@ -10,8 +10,8 @@ const { title } = Astro.props;
       class="absolute top-[-15px] right-[-15px] bg-blue-500 h-[220px] w-6 rounded-[32px] transform scale-100 origin-center transition-transform duration-300 ease-out group-hover:scale-[40] group-hover:delay-200 z-0"
     >
     </div>
-    <h4 class="relative text-black z-10">{title}</h4>
-    <p class="py-2 text-black group-hover:text-black relative z-10">
+    <h4 class="font-bold relative text-black z-10">{title}</h4>
+    <p class="py-2 text-black relative z-10">
       <slot />
     </p>
   </div>
