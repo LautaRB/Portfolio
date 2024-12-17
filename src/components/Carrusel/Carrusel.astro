@@ -1,7 +1,8 @@
 ---
 import "@splidejs/splide/css";
-import Button from "@components/Button.astro";
-import Card from "@components/Card.astro";
+import Button from "@components/Button/Button.astro";
+import Icon from "@components/Icon/Icon.astro";
+import Card from "@components/Card/Card.astro";
 ---
 
 <div class="splide" role="group">
@@ -23,31 +24,27 @@ import Card from "@components/Card.astro";
         <div id="proyectos" class="pb-12 text-white">
           <h1 class="text-xl font-bold">Proyectos</h1>
 
-          <Card title="Prueba" content="blablabla" />
+          <Card title="Prueba">blablabla</Card>
         </div>
       </li>
       <li class="splide__slide">
         <div id="contacto" class="pb-12 text-white text-center">
           <h1 class="text-xl font-bold mb-6">Contacto</h1>
 
-          <div
-            class="grid gap-4 items-center justify-center"
-          >
-            <Button
-              name="Gmail"
-              link="mailto:lautanba@gmail.com"
-              icon="/Gmail_Icon.svg"
-            />
+          <div class="grid gap-4 items-center justify-center">
+            <Button name="Gmail" link="mailto:lautanba@gmail.com">
+              <Icon name="Gmail" icon="/Gmail_Icon.svg" />
+            </Button>
+
             <Button
               name="LinkedIn"
               link="https://www.linkedin.com/in/lautaro-rodriguez-brown-7294b9257/"
-              icon="/Linkedin_Icon.svg"
-            />
-            <Button
-              name="Github"
-              link="https://github.com/LautaRB"
-              icon="/Github_Icon.svg"
-            />
+            >
+              <Icon name="LinkedIn" icon="/Linkedin_Icon.svg" />
+            </Button>
+            <Button name="Github" link="https://github.com/LautaRB">
+              <Icon name="Github" icon="/Github_Icon.svg" />
+            </Button>
           </div>
         </div>
       </li>
@@ -71,7 +68,7 @@ import Card from "@components/Card.astro";
           // Índice del slide correspondiente
           const targetIndex = parseInt(
             link.getAttribute("data-slide") ?? "0",
-            10
+            10,
           );
 
           // Navega al slide correspondiente

@@ -1,5 +1,5 @@
 ---
-const { name, link, icon } = Astro.props;
+const { name, link } = Astro.props;
 ---
 
 <a
@@ -11,10 +11,5 @@ const { name, link, icon } = Astro.props;
   >
     {name}
   </span>
-
-  <img
-    src={icon}
-    alt={name}
-    class="absolute right-3 transform translate-x-10 transition-transform duration-300 group-hover:translate-x-1 w-6 h-6"
-  />
+  <slot />
 </a>
