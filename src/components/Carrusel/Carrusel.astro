@@ -28,7 +28,16 @@ const projects = await getProjectsGit();
           <div class="inline-grid grid-cols-2 grid-rows-2 gap-4 mt-6">
             {
               projects.map((project: any) => (
-                <Card title={project.name}>{project.description}</Card>
+                <Card title={project.name}>
+                  {project.description}
+                  <br />
+                  <a
+                    href={project.html_url}
+                    class="hover:underline hover:text-white"
+                  >
+                    Ver proyecto
+                  </a>
+                </Card>
               ))
             }
           </div>
@@ -38,7 +47,9 @@ const projects = await getProjectsGit();
         <div id="contacto" class="pb-12 text-white text-center">
           <h1 class="text-xl font-bold mb-6">Contacto</h1>
 
-          <div class="grid gap-4 items-center justify-center">
+          <div
+            class="inline-grid grid-cols-2 gap-4 items-center justify-center"
+          >
             <Button name="Gmail" link="mailto:lautanba@gmail.com">
               <Icon name="Gmail" icon="/Gmail_Icon.svg" />
             </Button>
@@ -49,6 +60,7 @@ const projects = await getProjectsGit();
             >
               <Icon name="LinkedIn" icon="/Linkedin_Icon.svg" />
             </Button>
+
             <Button name="Github" link="https://github.com/LautaRB">
               <Icon name="Github" icon="/Github_Icon.svg" />
             </Button>
