@@ -1,8 +1,10 @@
 ---
 import "@splidejs/splide/css";
+import { getProjectsGit } from "@datos/projectsGit";
 import Button from "@components/Button/Button.astro";
 import Icon from "@components/Icon/Icon.astro";
 import Card from "@components/Card/Card.astro";
+const projects = await getProjectsGit();
 ---
 
 <div class="splide" role="group">
@@ -23,8 +25,13 @@ import Card from "@components/Card/Card.astro";
       <li class="splide__slide">
         <div id="proyectos" class="pb-12 text-white">
           <h1 class="text-xl font-bold">Proyectos</h1>
-
-          <Card title="Prueba">blablabla</Card>
+          <div class="inline-grid grid-cols-2 grid-rows-2 gap-4 mt-6">
+            {
+              projects.map((project: any) => (
+                <Card title={project.name}>{project.description}</Card>
+              ))
+            }
+          </div>
         </div>
       </li>
       <li class="splide__slide">
@@ -68,7 +75,7 @@ import Card from "@components/Card/Card.astro";
           // Índice del slide correspondiente
           const targetIndex = parseInt(
             link.getAttribute("data-slide") ?? "0",
-            10,
+            10
           );
 
           // Navega al slide correspondiente
