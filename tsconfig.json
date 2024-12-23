@@ -23,7 +23,7 @@
       "@components/*": ["src/components/*"],
       "@layouts/*": ["src/layouts/*"],
       "@pages/*": ["src/Pages/*"],
-      "@datos/*": ["src/datos/*"]
+      "@services/*": ["src/services/*"]
     }
   },
   "extends": "astro/tsconfigs/strict",

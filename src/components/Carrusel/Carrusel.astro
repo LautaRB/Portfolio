@@ -1,10 +1,16 @@
 ---
 import "@splidejs/splide/css";
-import { getProjectsGit } from "@datos/projectsGit";
+import { getProjectsGit } from "@services/projectsGit";
 import Button from "@components/Button/Button.astro";
 import Icon from "@components/Icon/Icon.astro";
 import Card from "@components/Card/Card.astro";
 const projects = await getProjectsGit();
+
+interface Project {
+  name: string;
+  description: string | null;
+  html_url: string;
+}
 ---
 
 <div class="splide" role="group">
@@ -27,7 +33,7 @@ const projects = await getProjectsGit();
           <h1 class="text-xl font-bold">Proyectos</h1>
           <div class="inline-grid grid-cols-2 grid-rows-2 gap-4 mt-6">
             {
-              projects.map((project: any) => (
+              projects.map((project: Project) => (
                 <Card title={project.name}>
                   {project.description}
                   <br />
