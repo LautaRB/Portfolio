@@ -4,12 +4,23 @@ import { getProjectsGit } from "@services/projectsGit";
 import Button from "@components/Button/Button.astro";
 import Icon from "@components/Icon/Icon.astro";
 import Card from "@components/Card/Card.astro";
+import SkillIcon from "@components/SkillIcon/SkillIcon.astro";
 const projects = await getProjectsGit();
+
+const iconsLanguajes = projects.map((project: Project) =>
+  project.language ? project.language.toLocaleLowerCase() : "github"
+);
+
+projects.map((project: Project) => {
+  project.iconLanguaje = iconsLanguajes[projects.indexOf(project)];
+});
 
 interface Project {
   name: string;
   description: string | null;
   html_url: string;
+  language: string;
+  iconLanguaje: string;
 }
 ---
 
@@ -34,16 +45,17 @@ interface Project {
           <div class="inline-grid grid-cols-2 grid-rows-2 gap-4 mt-6">
             {
               projects.map((project: Project) => (
-                <Card title={project.name}>
-                  {project.description}
-                  <br />
-                  <a
-                    href={project.html_url}
-                    class="hover:underline hover:text-white"
-                  >
-                    Ver proyecto
-                  </a>
-                </Card>
+                <a href={project.html_url}>
+                  <Card title={project.name}>
+                    {project.description}
+                    <br />
+                    <SkillIcon
+                      iconUrl={project.iconLanguaje}
+                      caption={project.language}
+                      size={7}
+                    />
+                  </Card>
+                </a>
               ))
             }
           </div>
