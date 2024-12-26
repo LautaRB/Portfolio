@@ -1,27 +1,13 @@
 ---
 import "@splidejs/splide/css";
-import { getProjectsGit } from "@services/projectsGit";
+import { getProjectsGit,fetchLanguages } from "@services/githubAPI";
+import { type Project } from "@services/githubAPI";
 import Button from "@components/Button/Button.astro";
 import Icon from "@components/Icon/Icon.astro";
 import Card from "@components/Card/Card.astro";
 import SkillIcon from "@components/SkillIcon/SkillIcon.astro";
-const projects = await getProjectsGit();
-
-const iconsLanguajes = projects.map((project: Project) =>
-  project.language ? project.language.toLocaleLowerCase() : "github"
-);
-
-projects.map((project: Project) => {
-  project.iconLanguaje = iconsLanguajes[projects.indexOf(project)];
-});
-
-interface Project {
-  name: string;
-  description: string | null;
-  html_url: string;
-  language: string;
-  iconLanguaje: string;
-}
+const projects = await getProjectsGit()
+const languages = await fetchLanguages();
 ---
 
 <div class="splide" role="group">
