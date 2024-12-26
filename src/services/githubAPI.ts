@@ -7,6 +7,11 @@ export interface Project {
   iconLanguaje: string;
 }
 
+export interface ReposLanguages {
+  url: string;
+  languages: string[];
+}
+
 export async function getProjectsGit() {
   const response = await fetch(
     "https://api.github.com/users/LautaRB/repos?sort=created&per_page=4",
@@ -55,8 +60,8 @@ export async function fetchLanguages(){
   const projects = await getProjectsGit();
   const urls = projects.map((project: Project) => project.languages_url)
   try {
-    const languages = await getLanguages(urls);
-    return languages;
+    const reposLanguages = await getLanguages(urls);
+    return reposLanguages;
   } catch (error) {
     console.error("Error:", error);
   }
