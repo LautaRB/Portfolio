@@ -6,7 +6,7 @@ import Button from "@components/Button/Button.astro";
 import Icon from "@components/Icon/Icon.astro";
 import Card from "@components/Card/Card.astro";
 import SkillIcon from "@components/SkillIcon/SkillIcon.astro";
-const projects = await getMergedInfo();
+const repositories = await getMergedInfo();
 ---
 
 <div class="splide" role="group">
@@ -29,7 +29,7 @@ const projects = await getMergedInfo();
           <h1 class="text-xl font-bold">Proyectos</h1>
           <div class="inline-grid grid-cols-2 grid-rows-2 gap-4 mt-6">
             {
-              projects.map((repository: RepositoryInfo) => (
+              repositories.map((repository: RepositoryInfo) => (
                 <a href={repository.html_url}>
                   <Card title={repository.name}>
                     {repository.description}
@@ -38,7 +38,6 @@ const projects = await getMergedInfo();
                       iconUrl={
                         repository.languages?.map((language: string) => language)
                       }
-                      caption={repository.language}
                       size={7}
                     />
                   </Card>

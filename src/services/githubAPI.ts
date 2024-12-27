@@ -37,7 +37,7 @@ async function getLanguages( urls: string[]): Promise<string[][]> {
         }
 
         const languaguesData = await response.json();
-        return Object.keys(languaguesData);
+        return Object.keys(languaguesData);;
       })
     );
 
@@ -61,15 +61,22 @@ async function fetchLanguages() {
   }
 }
 
-export async function getMergedInfo() {
+export async function getMergedInfo() { //Informácion de los repositorios y los lenguajes usados en ellos
   const repositories = await getRepositories();
   const languaguesData = await fetchLanguages();
 
+  /*repositories.forEach((repository: RepositoryInfo, index: number) => {
+    repository.languages = (languaguesData?.[index] || []).map(language =>
+      language.toLowerCase()
+    );
+  });*/
+
   repositories.forEach((repository: RepositoryInfo, index: number) => {
-    repository.languages = languaguesData?.[index] || [];
+    const languages = languaguesData?.[index];
+    repository.languages = (languages && languages.length > 0 ? languages : ["github"]).map(language =>
+      language.toLowerCase()
+    );
   });
-
-
-  console.log(repositories);
+  
   return repositories;
 }
