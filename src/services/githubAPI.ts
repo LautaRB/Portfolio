@@ -1,14 +1,10 @@
-export interface Project {
+export interface RepositoryInfo {
   name: string;
   description: string | null;
-  html_url: string;
-  language: string;
-  languages_url: string;
-  iconLanguaje: string;
-}
-
-export interface ReposLanguages {
-  languages: string[];
+  html_url: string; // url del repositorio
+  language: string; //Lenguaje principal del repositorio
+  languages_url: string; // Url de los lenguajes usados
+  languages: Array<string>; // Lenguajes usados en el repositorio
 }
 
 export async function getProjectsGit() {
@@ -40,9 +36,9 @@ async function getLanguages(urls: string[]): Promise<{ languages: string[] }[]> 
           throw new Error(`Error fetching languages from URL: ${url}`);
         }
 
-        const languagesData = await response.json();
+        const languaguesData = await response.json();
         return {
-          languages: Object.keys(languagesData),
+          languages: Object.keys(languaguesData),
         };
       })
     );
@@ -56,11 +52,22 @@ async function getLanguages(urls: string[]): Promise<{ languages: string[] }[]> 
 
 export async function fetchLanguages(){
   const projects = await getProjectsGit();
-  const urls = projects.map((project: Project) => project.languages_url)
+  const urls = projects.map((repository: RepositoryInfo) => repository.languages_url)
   try {
-    const reposLanguages = await getLanguages(urls);
-    return reposLanguages;
+    const languagues = await getLanguages(urls);
+    return languagues;
   } catch (error) {
     console.error("Error:", error);
   }
 }
+
+async function getMergedInfo(){
+  const projects = await getProjectsGit();
+  const languagues = await fetchLanguages();
+  console.log(languagues);
+  /*[
+      { languages: [ 'TypeScript', 'CSS', 'JavaScript', 'HTML' ] },
+      { languages: [] }
+    ]*/
+}
+getMergedInfo();

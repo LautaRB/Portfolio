@@ -1,17 +1,12 @@
 ---
 import "@splidejs/splide/css";
-import { getProjectsGit,fetchLanguages } from "@services/githubAPI";
-import { type Project, type ReposLanguages } from "@services/githubAPI";
+import { getProjectsGit } from "@services/githubAPI";
+import { type RepositoryInfo } from "@services/githubAPI";
 import Button from "@components/Button/Button.astro";
 import Icon from "@components/Icon/Icon.astro";
 import Card from "@components/Card/Card.astro";
 import SkillIcon from "@components/SkillIcon/SkillIcon.astro";
 const projects = await getProjectsGit();
-const reposLanguages = await fetchLanguages();
-
-const languages = reposLanguages?.map((language: ReposLanguages) => language.languages);
-console.log(languages);
-//[ [ 'TypeScript', 'CSS', 'JavaScript', 'HTML' ], [] ]
 ---
 
 <div class="splide" role="group">
@@ -34,14 +29,14 @@ console.log(languages);
           <h1 class="text-xl font-bold">Proyectos</h1>
           <div class="inline-grid grid-cols-2 grid-rows-2 gap-4 mt-6">
             {
-              projects.map((project: Project) => (
-                <a href={project.html_url}>
-                  <Card title={project.name}>
-                    {project.description}
+              projects.map((repository: RepositoryInfo) => (
+                <a href={repository.html_url}>
+                  <Card title={repository.name}>
+                    {repository.description}
                     <br />
                     <SkillIcon
-                      iconUrl={}
-                      caption={project.language}
+                      iconUrl={"blablabla"}
+                      caption={repository.language}
                       size={7}
                     />
                   </Card>
