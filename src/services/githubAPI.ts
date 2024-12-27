@@ -1,15 +1,13 @@
-import { object } from "astro:schema";
-
 export interface RepositoryInfo {
   name: string;
-  description: string | null;
+  description?: string;
   html_url: string; // url del repositorio
   language: string; //Lenguaje principal del repositorio
-  languages_url: string; // Url de los lenguajes usados
-  languages: string[] | undefined; // Lenguajes usados en el repositorio
+  languages_url?: string; // Url de los lenguajes usados
+  languages: string[]; // Lenguajes usados en el repositorio
 }
 
-async function getProjectsGit() {
+async function getRepositories() {
   const response = await fetch(
     "https://api.github.com/users/LautaRB/repos?sort=created&per_page=4",
     {
@@ -24,7 +22,7 @@ async function getProjectsGit() {
   return await response.json();
 }
 
-async function getLanguages( urls: string[]) {
+async function getLanguages( urls: string[]): Promise<string[][]> {
   try {
     const results = await Promise.all(
       urls.map(async (url) => {
@@ -39,15 +37,11 @@ async function getLanguages( urls: string[]) {
         }
 
         const languaguesData = await response.json();
-        return {
-          languages: Object.keys(languaguesData),
-        };
+        return Object.keys(languaguesData);
       })
     );
-    
-    const languagesArr = results.map((result) => result.languages);
 
-    return languagesArr;
+    return results;
   } catch (error) {
     console.error("Error fetching languages:", error);
     throw error;
@@ -55,8 +49,8 @@ async function getLanguages( urls: string[]) {
 }
 
 async function fetchLanguages() {
-  const projects = await getProjectsGit();
-  const urls = projects.map(
+  const repositories = await getRepositories();
+  const urls = repositories.map(
     (repository: RepositoryInfo) => repository.languages_url
   );
   try {
@@ -68,18 +62,14 @@ async function fetchLanguages() {
 }
 
 export async function getMergedInfo() {
-  const projects = await getProjectsGit();
+  const repositories = await getRepositories();
   const languaguesData = await fetchLanguages();
 
-  projects.forEach((repository: RepositoryInfo, index: number) => {
-    repository.languages = languaguesData?.[index];
+  repositories.forEach((repository: RepositoryInfo, index: number) => {
+    repository.languages = languaguesData?.[index] || [];
   });
 
-  projects.map((repository: RepositoryInfo) => {
-    repository.languages?.map((language: string) => {
-      language.toLocaleLowerCase();
-    });
-  });
 
-  return projects;
+  console.log(repositories);
+  return repositories;
 }
