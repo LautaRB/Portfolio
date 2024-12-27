@@ -1,12 +1,12 @@
 ---
 import "@splidejs/splide/css";
-import { getProjectsGit } from "@services/githubAPI";
+import { getMergedInfo } from "@services/githubAPI";
 import { type RepositoryInfo } from "@services/githubAPI";
 import Button from "@components/Button/Button.astro";
 import Icon from "@components/Icon/Icon.astro";
 import Card from "@components/Card/Card.astro";
 import SkillIcon from "@components/SkillIcon/SkillIcon.astro";
-const projects = await getProjectsGit();
+const projects = await getMergedInfo();
 ---
 
 <div class="splide" role="group">
@@ -35,7 +35,9 @@ const projects = await getProjectsGit();
                     {repository.description}
                     <br />
                     <SkillIcon
-                      iconUrl={"blablabla"}
+                      iconUrl={
+                        repository.languages?.map((language: string) => language)
+                      }
                       caption={repository.language}
                       size={7}
                     />

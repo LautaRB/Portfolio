@@ -1,13 +1,15 @@
+import { object } from "astro:schema";
+
 export interface RepositoryInfo {
   name: string;
   description: string | null;
   html_url: string; // url del repositorio
   language: string; //Lenguaje principal del repositorio
   languages_url: string; // Url de los lenguajes usados
-  languages: Array<string>; // Lenguajes usados en el repositorio
+  languages: string[] | undefined; // Lenguajes usados en el repositorio
 }
 
-export async function getProjectsGit() {
+async function getProjectsGit() {
   const response = await fetch(
     "https://api.github.com/users/LautaRB/repos?sort=created&per_page=4",
     {
@@ -22,7 +24,7 @@ export async function getProjectsGit() {
   return await response.json();
 }
 
-async function getLanguages(urls: string[]): Promise<{ languages: string[] }[]> {
+async function getLanguages( urls: string[]) {
   try {
     const results = await Promise.all(
       urls.map(async (url) => {
@@ -42,17 +44,21 @@ async function getLanguages(urls: string[]): Promise<{ languages: string[] }[]> 
         };
       })
     );
+    
+    const languagesArr = results.map((result) => result.languages);
 
-    return results;
+    return languagesArr;
   } catch (error) {
     console.error("Error fetching languages:", error);
     throw error;
   }
 }
 
-export async function fetchLanguages(){
+async function fetchLanguages() {
   const projects = await getProjectsGit();
-  const urls = projects.map((repository: RepositoryInfo) => repository.languages_url)
+  const urls = projects.map(
+    (repository: RepositoryInfo) => repository.languages_url
+  );
   try {
     const languagues = await getLanguages(urls);
     return languagues;
@@ -61,13 +67,19 @@ export async function fetchLanguages(){
   }
 }
 
-async function getMergedInfo(){
+export async function getMergedInfo() {
   const projects = await getProjectsGit();
-  const languagues = await fetchLanguages();
-  console.log(languagues);
-  /*[
-      { languages: [ 'TypeScript', 'CSS', 'JavaScript', 'HTML' ] },
-      { languages: [] }
-    ]*/
+  const languaguesData = await fetchLanguages();
+
+  projects.forEach((repository: RepositoryInfo, index: number) => {
+    repository.languages = languaguesData?.[index];
+  });
+
+  projects.map((repository: RepositoryInfo) => {
+    repository.languages?.map((language: string) => {
+      language.toLocaleLowerCase();
+    });
+  });
+
+  return projects;
 }
-getMergedInfo();
