@@ -8,7 +8,6 @@ export interface Project {
 }
 
 export interface ReposLanguages {
-  url: string;
   languages: string[];
 }
 
@@ -27,7 +26,7 @@ export async function getProjectsGit() {
   return await response.json();
 }
 
-async function getLanguages(urls: string[]): Promise<{ url: string; languages: string[] }[]> {
+async function getLanguages(urls: string[]): Promise<{ languages: string[] }[]> {
   try {
     const results = await Promise.all(
       urls.map(async (url) => {
@@ -43,7 +42,6 @@ async function getLanguages(urls: string[]): Promise<{ url: string; languages: s
 
         const languagesData = await response.json();
         return {
-          url,
           languages: Object.keys(languagesData),
         };
       })
