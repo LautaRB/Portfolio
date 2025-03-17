@@ -2,14 +2,11 @@
 const { name, link } = Astro.props;
 ---
 
-<a
-  href={link}
-  class="relative flex items-center justify-between overflow-hidden px-3 py-2 w-32 bg-blue-500 text-white rounded-lg group hover:bg-blue-600"
->
-  <span
-    class="transition-all duration-300 whitespace-nowrap transform group-hover:translate-x-4"
-  >
+<a href={link} class="btn-blue">
+  <span>
     {name}
   </span>
-  <slot />
+  <div class="icon">
+    <slot />
+  </div>
 </a>

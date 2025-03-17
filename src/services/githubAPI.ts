@@ -65,12 +65,6 @@ export async function getMergedInfo() { //Informácion de los repositorios y los
   const repositories = await getRepositories();
   const languaguesData = await fetchLanguages();
 
-  /*repositories.forEach((repository: RepositoryInfo, index: number) => {
-    repository.languages = (languaguesData?.[index] || []).map(language =>
-      language.toLowerCase()
-    );
-  });*/
-
   repositories.forEach((repository: RepositoryInfo, index: number) => {
     const languages = languaguesData?.[index];
     repository.languages = (languages && languages.length > 0 ? languages : ["github"]).map(language =>
