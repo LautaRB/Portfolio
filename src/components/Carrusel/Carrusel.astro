@@ -15,7 +15,19 @@ const repositories = await getMergedInfo();
       <li class="splide__slide">
         <div id="sobre-mi" class="pb-12 text-white">
           <h1 class="text-xl font-bold">Sobre mi</h1>
-          <p>blablabla</p>
+          <div class="@container flex flex-col items-center justify-center">
+            <p class="w-[75cqw] mt-6 text-xl text-center">
+              ¡Hola! Soy Lautaro Rodriguez Brown, desarrollador de software
+              residente en la Ciudad Autónoma de Buenos Aires, Argentina. Me
+              apasiona aprender nuevas tecnologías y afrontar desafíos que
+              impulsen mi crecimiento profesional. Especializado en C, Java,
+              Javascript y Python, me destaco por ser una persona organizada,
+              puntual, responsable y comprometida. Trabajo de manera eficiente
+              en equipo, adaptándome rápidamente a nuevos paradigmas y enfoques.
+              Mi objetivo es contribuir a proyectos innovadores, ofreciendo
+              soluciones creativas y efectivas.
+            </p>
+          </div>
         </div>
       </li>
       <li class="splide__slide">
@@ -35,15 +47,15 @@ const repositories = await getMergedInfo();
                     {repository.description}
                     <br />
                     <SkillIcon
-                      iconUrl={
-                        repository.languages?.map((language: string) => language)
-                      }
+                      iconUrl={repository.languages?.map(
+                        (language: string) => language
+                      )}
                       size={7}
                     />
                   </Card>
                 </a>
               ))
-              }
+            }
           </div>
         </div>
       </li>
