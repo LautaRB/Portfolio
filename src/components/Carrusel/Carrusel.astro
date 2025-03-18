@@ -7,6 +7,25 @@ import Icon from "@components/Icon/Icon.astro";
 import Card from "@components/Card/Card.astro";
 import SkillIcon from "@components/SkillIcon/SkillIcon.astro";
 const repositories = await getMergedInfo();
+
+const born = new Date("July 30, 2001 00:00:00"); //fecha de nacimiento
+const now = new Date(); //Fecha actual
+const mounth = now.getMonth(); //Mes actual
+const day = now.getDate(); //Dia actual
+const hour = now.getHours(); //Hora actual
+const monthDiff = now.getMonth() - born.getMonth(); //Diferencia en meses
+let Bday : boolean = false; //Indica si es cumpleaños
+let edad : number;
+
+if (mounth === born.getMonth() && day === born.getDate() && hour === born.getHours()) {
+  Bday = true;
+}
+
+if (monthDiff > 0 || Bday) {
+  edad = now.getFullYear() - born.getFullYear();
+} else {
+  edad = now.getFullYear() - born.getFullYear() - 1;
+}
 ---
 
 <div class="splide" role="group">
@@ -17,14 +36,15 @@ const repositories = await getMergedInfo();
           <h1 class="text-xl font-bold">Sobre mi</h1>
           <div class="@container flex flex-col items-center justify-center">
             <p class="w-[75cqw] mt-6 text-xl text-center">
-              ¡Hola! Soy Lautaro Rodriguez Brown, desarrollador de software
-              residente en la Ciudad Autónoma de Buenos Aires, Argentina. Me
-              apasiona aprender nuevas tecnologías y afrontar desafíos que
-              impulsen mi crecimiento profesional. Especializado en C, Java,
-              Javascript y Python, me destaco por ser una persona organizada,
-              puntual, responsable y comprometida. Trabajo de manera eficiente
-              en equipo, adaptándome rápidamente a nuevos paradigmas y enfoques.
-              Mi objetivo es contribuir a proyectos innovadores, ofreciendo
+              ¡Hola! Soy Lautaro Rodriguez Brown, tengo {edad} años y soy
+              desarrollador de software residente en la Ciudad Autónoma de
+              Buenos Aires, Argentina. Me apasiona aprender nuevas tecnologías y
+              afrontar desafíos que impulsen mi crecimiento profesional.
+              Especializado en lenguajes como C, Java, Javascript, Python entre
+              otros, me destaco por ser una persona organizada, puntual,
+              responsable y comprometida. Trabajo de manera eficiente en equipo,
+              adaptándome rápidamente a nuevos paradigmas y enfoques. Mi
+              objetivo es contribuir a proyectos innovadores, ofreciendo
               soluciones creativas y efectivas.
             </p>
           </div>
