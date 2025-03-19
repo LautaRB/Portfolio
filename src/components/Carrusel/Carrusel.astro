@@ -6,6 +6,7 @@ import Button from "@components/Button/Button.astro";
 import Icon from "@components/Icon/Icon.astro";
 import Card from "@components/Card/Card.astro";
 import SkillIcon from "@components/SkillIcon/SkillIcon.astro";
+
 const repositories = await getMergedInfo();
 
 const born = new Date("July 30, 2001 00:00:00"); //fecha de nacimiento
@@ -65,7 +66,16 @@ if (monthDiff > 0 || Bday) {
       <li class="splide__slide">
         <div id="formacion" class="pb-12 text-white">
           <h1 class="text-xl font-bold">Formación</h1>
-          <p>blablabla</p>
+          {(
+            <div class="inline-grid grid-cols-3 gap-4 mt-6">
+              <Card title="Secundaria" cardtype={false}>
+              </Card>
+              <Card title="Terciario" cardtype={false}>
+              </Card>
+              <Card title="Tic" cardtype={false}>
+              </Card>
+            </div>
+          )}
         </div>
       </li>
       <li class="splide__slide">
@@ -95,9 +105,7 @@ if (monthDiff > 0 || Bday) {
         <div id="contacto" class="pb-12 text-white text-center">
           <h1 class="text-xl font-bold mb-6">Contacto</h1>
 
-          <div
-            class="inline-grid gap-4 items-center justify-center"
-          >
+          <div class="inline-grid gap-4 items-center justify-center">
             <Button name="Gmail" link="mailto:lautanba@gmail.com">
               <Icon name="Gmail" icon="/Gmail_Icon.svg" />
             </Button>
