@@ -6,31 +6,9 @@ import Button from "@components/Button/Button.astro";
 import Icon from "@components/Icon/Icon.astro";
 import Card from "@components/Card/Card.astro";
 import SkillIcon from "@components/SkillIcon/SkillIcon.astro";
+import { info } from "@helpers/data.ts";
 
 const repositories = await getMergedInfo();
-
-const born = new Date("July 30, 2001 00:00:00"); //fecha de nacimiento
-const now = new Date(); //Fecha actual
-const mounth = now.getMonth(); //Mes actual
-const day = now.getDate(); //Dia actual
-const hour = now.getHours(); //Hora actual
-const monthDiff = now.getMonth() - born.getMonth(); //Diferencia en meses
-let Bday: boolean = false; //Indica si es cumpleaños
-let edad: number;
-
-if (
-  mounth === born.getMonth() &&
-  day === born.getDate() &&
-  hour === born.getHours()
-) {
-  Bday = true;
-}
-
-if (monthDiff > 0 || Bday) {
-  edad = now.getFullYear() - born.getFullYear();
-} else {
-  edad = now.getFullYear() - born.getFullYear() - 1;
-}
 ---
 
 <div class="splide" role="group">
@@ -40,25 +18,8 @@ if (monthDiff > 0 || Bday) {
         <div id="sobre-mi" class="pb-12 text-white">
           <h1 class="text-xl font-bold">Sobre mi</h1>
           <div class="@container flex flex-col items-center justify-center">
-            <p class="w-[75cqw] mt-6 text-xl text-justify">
-              ¡Hola! Me llamo Lautaro Rodriguez Brown, tengo {edad} años y soy desarrollador
-              de software residente en la Ciudad Autónoma de Buenos Aires, Argentina.
-              <br />
-              Me apasiona aprender nuevas tecnologías y afrontar desafíos que impulsen
-              mi crecimiento profesional. Me especializo en lenguajes como C, Java,
-              Javascript, Python, entre otros. Me destaco por ser una persona organizada,
-              puntual, responsable y comprometida. Trabajo de manera eficiente en
-              equipo, adaptándome rápidamente a nuevos paradigmas y enfoques. Mi
-              objetivo es contribuir a proyectos innovadores, ofreciendo soluciones
-              creativas y efectivas.
-              <br />
-              <br />
-              <br />
-              Fuera de la programación, me gusta complementar mis conocimientos con
-              otras áreas de la informática, como lo es el mantenimiento y reparación
-              de computadoras. En lo personal, soy una persona que disfruta practicar
-              deportes, pasar tiempo con amigos y relajarme con actividades como
-              ver series o películas.
+            <p class="w-[75cqw] mt-6 text-xl text-justify whitespace-pre-line">
+              {info.aboutMe.join("\n\n")}
             </p>
           </div>
         </div>
@@ -66,16 +27,60 @@ if (monthDiff > 0 || Bday) {
       <li class="splide__slide">
         <div id="formacion" class="pb-12 text-white">
           <h1 class="text-xl font-bold">Formación</h1>
-          {(
-            <div class="inline-grid grid-cols-3 gap-4 mt-6">
-              <Card title="Secundaria" cardtype={false}>
-              </Card>
-              <Card title="Terciario" cardtype={false}>
-              </Card>
-              <Card title="Tic" cardtype={false}>
-              </Card>
-            </div>
-          )}
+          {
+            (
+              <div class="inline-grid grid-cols-3 gap-4 mt-6">
+                <Card title="Escuela secundaria" cardtype={false}>
+                  <div class="inline-grid grid-rows-2 select-none">
+                    <h4 class="text-lg font-medium p-4">
+                      {info.formacion.secundaria.titulo}
+                    </h4>
+                    <p class="text-sm">
+                      {info.formacion.secundaria.institucion}
+                      <br/>
+                      {info.formacion.secundaria.fechaInicio}
+                      -
+                      {info.formacion.secundaria.fechaFin}
+                      <br/>
+                      {info.formacion.secundaria.lugar}
+                    </p>
+                  </div>
+                </Card>
+                <Card title="Facultad" cardtype={false}>
+                  <div class="inline-grid grid-rows-2 select-none">
+                    <h4 class="text-lg font-medium p-4">
+                      {info.formacion.facultad.titulo}
+                    </h4>
+                    <p class="text-sm">
+                      {info.formacion.facultad.institucion}
+                      <br/>
+                      {info.formacion.facultad.fechaInicio}
+                      -
+                      {info.formacion.facultad.fechaFin}
+                      <br/>
+                      {info.formacion.facultad.lugar}
+                    </p>
+                  </div>
+                </Card>
+                <Card title="Experiencia laboral" cardtype={false}>
+                  <div class="inline-grid grid-rows-2 select-none">
+                    <h4 class="text-lg font-medium p-4">
+                      {info.formacion.experienciaLaboral.puesto}
+                    </h4>
+                    <p class="text-sm">
+                      {info.formacion.experienciaLaboral.empresa}
+                      <br/>
+                      {info.formacion.experienciaLaboral.fechaInicio}
+                      -
+                      {info.formacion.experienciaLaboral.fechaFin}
+                      <br/>
+                      {info.formacion.experienciaLaboral.lugar}
+                    </p>
+                  </div>
+                </Card> 
+              </div>
+            )
+          }
         </div>
       </li>
       <li class="splide__slide">
@@ -106,18 +111,15 @@ if (monthDiff > 0 || Bday) {
           <h1 class="text-xl font-bold mb-6">Contacto</h1>
 
           <div class="inline-grid gap-4 items-center justify-center">
-            <Button name="Gmail" link="mailto:lautanba@gmail.com">
+            <Button name="Gmail" link={info.links.gmail}>
               <Icon name="Gmail" icon="/Gmail_Icon.svg" />
             </Button>
 
-            <Button
-              name="LinkedIn"
-              link="https://www.linkedin.com/in/lautaro-rodriguez-brown-7294b9257/"
-            >
+            <Button name="LinkedIn" link={info.links.linkedin}>
               <Icon name="LinkedIn" icon="/Linkedin_Icon.svg" />
             </Button>
 
-            <Button name="Github" link="https://github.com/LautaRB">
+            <Button name="Github" link={info.links.github}>
               <Icon name="Github" icon="/Github_Icon.svg" />
             </Button>
           </div>
