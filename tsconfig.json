@@ -24,7 +24,8 @@
       "@layouts/*": ["src/layouts/*"],
       "@pages/*": ["src/Pages/*"],
       "@services/*": ["src/services/*"],
-      "@ts/*": ["src/ts/*"]
+      "@helpers/*": ["src/helpers/*"],
+      "@ts/*": ["src/ts/*"],
     }
   },
   "extends": "astro/tsconfigs/strict",

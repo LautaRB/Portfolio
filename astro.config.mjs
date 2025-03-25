@@ -16,6 +16,7 @@ export default defineConfig({
         '@layouts': '/src/layouts',
         '@pages': '/src/pages',
         '@services': '/src/services',
+        '@helpers': '/src/helpers',
         '@ts': '/src/ts',
       },
     },
