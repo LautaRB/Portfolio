@@ -3,11 +3,7 @@
 import { defineConfig } from 'astro/config';
 import netlify from '@astrojs/netlify';
 import tailwind from '@astrojs/tailwind';
-import { fileURLToPath } from 'url';
-import path from 'path';
 import 'dotenv/config';
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url)); 
 
 // https://astro.build/config
 export default defineConfig({
@@ -21,7 +17,7 @@ export default defineConfig({
         '@layouts': '/src/layouts',
         '@pages': '/src/pages',
         '@services': '/src/services',
-        '@helpers': path.resolve(__dirname, 'src/helpers'),
+        '@helpers': '/src/helpers',
         '@ts': '/src/ts',
         '@': '/src',
       },

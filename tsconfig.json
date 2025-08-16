@@ -29,6 +29,6 @@
     }
   },
   "extends": "astro/tsconfigs/strict",
-  "include": [".astro/types.d.ts", "astro.config.mjs","src/**/*"],
+  "include": ["src/**/*"],
   "exclude": ["dist"]
 }
