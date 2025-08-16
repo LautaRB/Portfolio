@@ -1,17 +1,18 @@
 // @ts-check
 // @ts-check
 import { defineConfig } from 'astro/config';
-
-import netlify from '@astrojs/netlify/functions';
-
+import netlify from '@astrojs/netlify';
 import tailwind from '@astrojs/tailwind';
-
+import { fileURLToPath } from 'url';
+import path from 'path';
 import 'dotenv/config';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url)); 
 
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
-  adapter: netlify({}),
+  adapter: netlify(),
   integrations: [tailwind()],
   vite: {
     resolve: {
@@ -20,7 +21,7 @@ export default defineConfig({
         '@layouts': '/src/layouts',
         '@pages': '/src/pages',
         '@services': '/src/services',
-        '@helpers': '/src/helpers',
+        '@helpers': path.resolve(__dirname, 'src/helpers'),
         '@ts': '/src/ts',
         '@': '/src',
       },
