@@ -24,7 +24,7 @@
       "@layouts/*": ["src/layouts/*"],
       "@pages/*": ["src/Pages/*"],
       "@services/*": ["src/services/*"],
-      "@helpers/*": ["./src/helpers/*"],
+      "@helpers/*": ["src/helpers/*"],
       "@ts/*": ["src/ts/*"],
     }
   },
