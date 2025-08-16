@@ -53,7 +53,8 @@ const data = {
     links: {
         gmail: "mailto:lautanba@gmail.com",
         linkedin: "https://www.linkedin.com/in/lautaro-rodriguez-brown-7294b9257/",
-        github: "https://github.com/LautaRB"
+        github: "https://github.com/LautaRB",
+        CV: "/CV.pdf"
     }
 };
 

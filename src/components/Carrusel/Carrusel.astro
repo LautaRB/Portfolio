@@ -21,6 +21,10 @@ const repositories = await getMergedInfo();
             <p class="w-[75cqw] mt-6 text-xl text-justify whitespace-pre-line">
               {info.aboutMe.join("\n\n")}
             </p>
+            <br />
+            <Button name="CV" link={info.links.CV}>
+              <Icon name="CV" icon="/CV_Icon.svg" />
+            </Button>
           </div>
         </div>
       </li>
@@ -63,8 +67,8 @@ const repositories = await getMergedInfo();
                   </div>
                 </Card>
                 <Card title="Experiencia laboral" cardtype={false}>
-                  <div class="inline-grid grid-rows-2 select-none">
-                    <h4 class="text-lg font-medium p-4">
+                  <div class="grid gap-1 select-none p-0">
+                    <h4 class="text-lg font-medium">
                       {info.formacion.experienciaLaboral.puesto}
                     </h4>
                     <p class="text-sm">
