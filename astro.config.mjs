@@ -22,6 +22,7 @@ export default defineConfig({
         '@services': '/src/services',
         '@helpers': '/src/helpers',
         '@ts': '/src/ts',
+        '@': '/src',
       },
     },
   },

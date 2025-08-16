@@ -17,5 +17,10 @@
     "dotenv": "^16.4.7",
     "tailwindcss": "^3.4.15",
     "typescript": "^5.7.2"
+  },
+  "devDependencies": {
+    "browserslist": "^4.25.2",
+    "caniuse-lite": "^1.0.30001735",
+    "vite": "^7.1.2"
   }
 }
