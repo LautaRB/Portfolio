@@ -43,13 +43,13 @@ PORTFOLIO
 ## 🛠️ Instalación y uso
 
 Si querés levantar este proyecto de forma local, seguí estos pasos:
-# Clonar el repositorio
+### Clonar el repositorio
 git clone https://github.com/tuusuario/tu-repo.git
 
-# Entrar al directorio
+### Entrar al directorio
 cd tu-repo
 
-# Instalar dependencias
+### Instalar dependencias
 npm install
 
 ---
