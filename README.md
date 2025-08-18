@@ -1,48 +1,93 @@
-# Astro Starter Kit: Basics
+# 🌐 Portfolio - Lautaro Rodríguez Brown
 
-```sh
-npm create astro@latest -- --template basics
+¡Bienvenido/a a mi portfolio!  
+Este proyecto está pensado para mostrar mis habilidades, proyectos y experiencia como desarrollador web.  
+El sitio fue construido con **Astro**, **TypeScript** y **TailwindCSS**, y está deployado en **Netlify**.  
+
+👉 Podés verlo online en: [lautaro-rodriguez-brown.netlify.app](https://lautaro-rodriguez-brown.netlify.app)
+
+---
+
+## 🚀 Tecnologías utilizadas
+
+- [Astro](https://astro.build/) → Framework moderno para construir sitios rápidos y optimizados.  
+- [TypeScript](https://www.typescriptlang.org/) → Superset de JavaScript que permite tipado estático.  
+- [TailwindCSS](https://tailwindcss.com/) → Framework CSS basado en utilidades para un diseño rápido y consistente.  
+- [Netlify](https://www.netlify.com/) → Plataforma de hosting y deploy continuo.  
+- [GitHub API](https://docs.github.com/en/rest) → Usada para obtener información dinámica de mis proyectos.  
+
+---
+
+## 📂 Estructura del proyecto
+
+```bash
+PORTFOLIO
+├── .vscode/               # Configuración de VSCode
+├── dist/                  # Archivos generados tras el build
+├── public/                # Archivos estáticos (imágenes, fuentes, etc.)
+├── src/                   # Código fuente del proyecto
+│   ├── components/        # Componentes reutilizables
+│   ├── layouts/           # Layouts principales
+│   ├── pages/             # Páginas del portfolio
+├── .gitignore             # Archivos/carpetas ignorados por Git
+├── astro.config.mjs       # Configuración principal de Astro
+├── netlify.toml           # Configuración de deploy en Netlify
+├── package-lock.json      # Dependencias bloqueadas
+├── package.json           # Dependencias y scripts del proyecto
+├── README.md              # Documentación del proyecto
+├── tailwind.config.mjs    # Configuración de TailwindCSS
+└── tsconfig.json          # Configuración de TypeScript
 ```
+---
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## 🛠️ Instalación y uso
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Si querés levantar este proyecto de forma local, seguí estos pasos:
+# Clonar el repositorio
+git clone https://github.com/tuusuario/tu-repo.git
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+# Entrar al directorio
+cd tu-repo
 
-## 🚀 Project Structure
+# Instalar dependencias
+npm install
 
-Inside of your Astro project, you'll see the following folders and files:
+---
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## 🔑 Variables de entorno
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+Este proyecto utiliza la API de GitHub, por lo que es necesario contar con una clave personal de acceso.
+Creá un archivo .env en la raíz del proyecto con el siguiente contenido:
 
-## 🧞 Commands
+GITHUB_TOKEN=tu_clave_personal
 
-All commands are run from the root of the project, from a terminal:
+---
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## ▶️ Ejecutar en desarrollo
 
-## 👀 Want to learn more?
+npm run dev
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+El proyecto se ejecutará en http://localhost:4321 (o el puerto que indique Astro).
+
+---
+
+## 📦 Scripts disponibles
+
+npm run dev → Levanta el servidor de desarrollo.
+
+npm run build → Genera la versión optimizada para producción.
+
+npm run preview → Previsualiza el build localmente.
+
+---
+
+## 🌍 Deploy
+
+El proyecto está hosteado en Netlify, con integración continua: cada vez que se hace push a la rama principal, Netlify se encarga de generar el build y desplegarlo automáticamente.
+
+👉 Portfolio online: lautaro-rodriguez-brown.netlify.app
+
+## ⚡Fork the Repository
+Si te gusta el **proyecto** y queres usarlo, podes crear un fork y usarlo en tu propio portafolio.
+
+Gracias por visitar mi portafolio. Si tienes alguna pregunta o sugerencia, ¡no dudes en contactarme!
