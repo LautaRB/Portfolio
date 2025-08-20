@@ -44,7 +44,7 @@ PORTFOLIO
 
 Si querés levantar este proyecto de forma local, seguí estos pasos:
 ### Clonar el repositorio
-git clone https://github.com/tuusuario/tu-repo.git
+git clone [https://github.com/tuusuario/tu-repo.git](https://github.com/LautaRB/Portfolio.git)
 
 ### Entrar al directorio
 cd tu-repo
